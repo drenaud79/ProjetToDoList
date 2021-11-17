@@ -1,14 +1,20 @@
-import Todo from '../components/todo'
+import Todo from '../components/Todo'
 
 
 const TodoListView = (props) => {
-    console.log(props)
+   
+    const DeleteHandler = (id) => {
+        console.log(id);
+        props.onDeleteItem(id);
+    }
+
     return (
         <>
             <ul>
             {props.todo.map((t) => (
-                <Todo
+                <Todo onDeleteItem={DeleteHandler}
                 key={t.id}
+                id={t.id}
                 todo={t.todo}
                 />
             ))}
